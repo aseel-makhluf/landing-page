@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>واحة — زيت زيتون بكر ممتاز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive-deep:#3C4527;
+    --olive-mid:#5C6B3A;
+    --sand:#EFE7D6;
+    --clay:#B5652E;
+    --gold:#C7A359;
+    --ink:#26301A;
+    --paper:#FBF7EE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Tajawal', sans-serif;
+    font-weight:900;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    min-height:100vh;
+    background:linear-gradient(180deg, var(--olive-deep) 0%, #2C3420 100%);
+    color:var(--sand);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:6vh 8vw;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(199,163,89,0.18), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(181,101,46,0.15), transparent 40%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-size:0.95rem;
+    letter-spacing:0.15em;
+    color:var(--gold);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:36px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    line-height:1.15;
+    max-width:14ch;
+    z-index:1;
+  }
+  .hero h1 span{ color:var(--clay); }
+  .hero p.lead{
+    font-size:clamp(1.05rem, 1.6vw, 1.3rem);
+    color:#D8D2BE;
+    max-width:42ch;
+    margin-top:22px;
+    line-height:1.9;
+    font-weight:300;
+    z-index:1;
+  }
+  .hero-cta{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    z-index:1;
+  }
+  .btn{
+    font-family:'Tajawal',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    padding:16px 34px;
+    border-radius:3px;
+    cursor:pointer;
+    border:none;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:var(--clay);
+    color:var(--paper);
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 10px 24px rgba(181,101,46,.35); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--sand);
+    border:1px solid rgba(239,231,214,.35);
+  }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* ===== Drop signature element ===== */
+  .drop-wrap{
+    position:absolute;
+    left:8vw; bottom:0;
+    width:min(34vw, 420px);
+    aspect-ratio:1/1.3;
+    z-index:0;
+    opacity:.95;
+  }
+  @media (max-width:880px){ .drop-wrap{ display:none; } }
+  .drop{
+    width:100%; height:100%;
+  }
+  .pour{
+    transform-origin:top center;
+    animation:pour 3.2s ease-in-out infinite;
+  }
+  @keyframes pour{
+    0%,100%{ transform:scaleY(0.9) translateY(0); }
+    50%{ transform:scaleY(1) translateY(4px); }
+  }
+
+  /* ===== Section: story ===== */
+  .section{
+    padding:9vh 8vw;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:860px){ .story{ grid-template-columns:1fr; } }
+  .story h2{
+    font-size:clamp(1.8rem,3vw,2.6rem);
+    color:var(--olive-deep);
+    line-height:1.3;
+    margin-bottom:24px;
+  }
+  .story p{
+    color:#4A4636;
+    line-height:2;
+    font-size:1.05rem;
+    font-weight:300;
+  }
+  .label-tag{
+    font-size:.85rem;
+    color:var(--clay);
+    font-weight:600;
+    letter-spacing:.08em;
+    margin-bottom:10px;
+    display:block;
+  }
+  .grove-art{
+    background:var(--olive-mid);
+    border-radius:4px;
+    aspect-ratio:4/3;
+    position:relative;
+    overflow:hidden;
+  }
+  .grove-art svg{ width:100%; height:100%; display:block; }
+
+  /* ===== Section: details strip ===== */
+  .strip{
+    background:var(--olive-deep);
+    color:var(--sand);
+    padding:7vh 8vw;
+  }
+  .strip-grid{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+  }
+  @media (max-width:760px){ .strip-grid{ grid-template-columns:1fr; gap:32px; } }
+  .strip-item h3{
+    font-size:1.1rem;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+  .strip-item p{
+    color:#CFC9B4;
+    font-weight:300;
+    line-height:1.8;
+    font-size:.97rem;
+  }
+  .divider-h{
+    width:1px;
+    background:rgba(239,231,214,.18);
+  }
+
+  /* ===== Section: product showcase ===== */
+  .showcase{
+    text-align:center;
+  }
+  .showcase .label-tag{ text-align:center; }
+  .showcase h2{
+    color:var(--olive-deep);
+    font-size:clamp(1.8rem,3vw,2.6rem);
+    margin-bottom:14px;
+  }
+  .showcase > p{
+    color:#6B6650;
+    max-width:50ch;
+    margin:0 auto 50px;
+    font-weight:300;
+    line-height:1.8;
+  }
+  .bottles{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    flex-wrap:wrap;
+  }
+  .bottle-card{
+    width:230px;
+    text-align:center;
+  }
+  .bottle-card svg{ width:100%; height:auto; }
+  .bottle-card .price{
+    font-family:'Tajawal',sans-serif;
+    font-weight:900;
+    font-size:1.4rem;
+    color:var(--clay);
+    margin-top:14px;
+  }
+  .bottle-card .name{
+    font-weight:700;
+    margin-top:6px;
+    color:var(--olive-deep);
+  }
+  .bottle-card .sub{
+    font-size:.85rem;
+    color:#928C75;
+    font-weight:300;
+  }
+
+  /* ===== Order form ===== */
+  .order-section{
+    background:var(--sand);
+    padding:9vh 8vw;
+  }
+  .order-box{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--paper);
+    border:1px solid rgba(60,69,39,.12);
+    border-radius:6px;
+    padding:50px 44px;
+    box-shadow:0 20px 50px rgba(38,48,26,.08);
+  }
+  .order-box .label-tag{ text-align:center; }
+  .order-box h2{
+    text-align:center;
+    color:var(--olive-deep);
+    font-size:clamp(1.6rem,2.6vw,2.1rem);
+    margin-bottom:8px;
+  }
+  .order-box > p.sub-lead{
+    text-align:center;
+    color:#75705B;
+    font-weight:300;
+    margin-bottom:36px;
+    font-size:.97rem;
+  }
+  .field{
+    margin-bottom:22px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .field label{
+    font-size:.9rem;
+    font-weight:600;
+    color:var(--olive-deep);
+  }
+  .field input, .field select{
+    font-family:'Cairo',sans-serif;
+    padding:14px 16px;
+    border:1px solid rgba(60,69,39,.25);
+    border-radius:4px;
+    background:#fff;
+    font-size:1rem;
+    color:var(--ink);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .field input:focus, .field select:focus{
+    outline:none;
+    border-color:var(--clay);
+    box-shadow:0 0 0 3px rgba(181,101,46,.15);
+  }
+  .submit-btn{
+    width:100%;
+    background:var(--clay);
+    color:var(--paper);
+    font-family:'Tajawal',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    padding:17px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    margin-top:8px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .submit-btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(181,101,46,.3); }
+  .confirm-msg{
+    display:none;
+    text-align:center;
+    color:var(--olive-deep);
+    background:#E7EBD9;
+    border:1px solid rgba(92,107,58,.3);
+    padding:16px;
+    border-radius:4px;
+    margin-top:18px;
+    font-weight:600;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px;
+    color:#9B967F;
+    font-size:.85rem;
+    background:var(--paper);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pour{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">حصاد موسم 2026 — دفعة محدودة</div>
+    <h1>زيت الزيتون<br><span>كما عرفته الأرض.</span></h1>
+    <p class="lead">يُعصر باردًا خلال ساعات من القطف في بساتين الجبل الأخضر، ويُعبأ يدويًا دون وسطاء أو خلط. دفعة واحدة، طعم واحد لا يتكرر.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">اطلب الآن</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">اعرف القصة</button>
+    </div>
+
+    <div class="drop-wrap">
+      <svg class="drop" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+        <g class="pour">
+          <path d="M100 10 C140 70 170 110 170 150 C170 195 138 225 100 225 C62 225 30 195 30 150 C30 110 60 70 100 10 Z" fill="#C7A359" opacity="0.9"/>
+          <ellipse cx="100" cy="150" rx="55" ry="50" fill="#B5652E" opacity="0.55"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section story" id="story">
+    <div>
+      <span class="label-tag">من البستان إلى مائدتك</span>
+      <h2>ثمانون شجرة، عائلة واحدة، وموسم واحد في السنة</h2>
+      <p>تتم زراعة الزيتون في تربة بركانية على ارتفاع 600 متر، حيث يمنح فارق الحرارة بين الليل والنهار الثمرة حموضتها المميزة. يُقطف المحصول يدويًا في الأسبوع الأول من الحصاد، ويُنقل إلى المعصرة خلال أقل من ست ساعات للحفاظ على نضارته.</p>
+    </div>
+    <div class="grove-art">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="300" fill="#5C6B3A"/>
+        <circle cx="80" cy="90" r="45" fill="#475429"/>
+        <circle cx="180" cy="60" r="55" fill="#3C4527"/>
+        <circle cx="290" cy="100" r="48" fill="#475429"/>
+        <circle cx="120" cy="150" r="40" fill="#3C4527"/>
+        <circle cx="250" cy="170" r="50" fill="#475429"/>
+        <rect x="0" y="220" width="400" height="80" fill="#26301A"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section class="strip">
+    <div class="strip-grid">
+      <div class="strip-item">
+        <h3>عصر بارد خلال 6 ساعات</h3>
+        <p>من القطف إلى المعصرة، دون تخزين يطيل المدة أو يفقد الزيت نكهته.</p>
+      </div>
+      <div class="strip-item">
+        <h3>حموضة أقل من 0.3٪</h3>
+        <p>معيار يضع الزيت ضمن فئة البكر الممتاز وفق الاختبارات المخبرية المعتمدة.</p>
+      </div>
+      <div class="strip-item">
+        <h3>تعبئة في زجاج كهرماني</h3>
+        <p>يحمي الزيت من الضوء، ويحافظ على خصائصه لفترة أطول دون مواد حافظة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="section showcase">
+    <span class="label-tag">المنتج</span>
+    <h2>اختر الحجم المناسب لمطبخك</h2>
+    <p>كل زجاجة تُعبأ من نفس الدفعة، بنفس تاريخ العصر المطبوع على الملصق.</p>
+    <div class="bottles">
+      <div class="bottle-card">
+        <svg viewBox="0 0 120 220" xmlns="http://www.w3.org/2000/svg">
+          <rect x="48" y="0" width="24" height="20" rx="3" fill="#3C4527"/>
+          <path d="M40 20 H80 V50 C80 55 90 60 90 80 V200 C90 212 78 220 60 220 C42 220 30 212 30 200 V80 C30 60 40 55 40 50 Z" fill="#8C6A2E" opacity="0.85"/>
+          <rect x="35" y="110" width="50" height="55" rx="2" fill="#EFE7D6"/>
+        </svg>
+        <div class="name">زجاجة 250 مل</div>
+        <div class="sub">مثالية للتذوق اليومي</div>
+        <div class="price">45 د.ل</div>
+      </div>
+      <div class="bottle-card">
+        <svg viewBox="0 0 120 220" xmlns="http://www.w3.org/2000/svg">
+          <rect x="46" y="0" width="28" height="20" rx="3" fill="#3C4527"/>
+          <path d="M38 20 H82 V48 C82 54 94 60 94 82 V200 C94 212 80 220 60 220 C40 220 26 212 26 200 V82 C26 60 38 54 38 48 Z" fill="#8C6A2E" opacity="0.9"/>
+          <rect x="32" y="108" width="56" height="58" rx="2" fill="#EFE7D6"/>
+        </svg>
+        <div class="name">زجاجة 500 مل</div>
+        <div class="sub">الأكثر طلبًا للمطبخ</div>
+        <div class="price">78 د.ل</div>
+      </div>
+      <div class="bottle-card">
+        <svg viewBox="0 0 120 220" xmlns="http://www.w3.org/2000/svg">
+          <rect x="44" y="0" width="32" height="20" rx="3" fill="#3C4527"/>
+          <path d="M34 20 H86 V46 C86 53 100 60 100 84 V202 C100 213 82 220 60 220 C38 220 20 213 20 202 V84 C20 60 34 53 34 46 Z" fill="#8C6A2E" opacity="0.95"/>
+          <rect x="28" y="106" width="64" height="62" rx="2" fill="#EFE7D6"/>
+        </svg>
+        <div class="name">زجاجة 1 لتر</div>
+        <div class="sub">للعائلات والاستخدام الموسمي</div>
+        <div class="price">140 د.ل</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER FORM -->
+  <section class="order-section" id="order">
+    <div class="order-box">
+      <span class="label-tag">اطلب دفعتك</span>
+      <h2>أكمل بياناتك وسنتواصل معك للتأكيد</h2>
+      <p class="sub-lead">يصل الطلب خلال 2 إلى 4 أيام عمل حسب المنطقة</p>
+
+      <form id="orderForm" onsubmit="return handleSubmit(event)">
+        <div class="field">
+          <label for="fullname">الاسم الكامل</label>
+          <input type="text" id="fullname" name="fullname" placeholder="مثال: محمد أحمد الصالح" required>
+        </div>
+        <div class="field">
+          <label for="phone">رقم الهاتف</label>
+          <input type="tel" id="phone" name="phone" placeholder="مثال: 0912345678" required>
+        </div>
+        <div class="field">
+          <label for="location">المدينة / المنطقة</label>
+          <input type="text" id="location" name="location" placeholder="مثال: طرابلس - السراج" required>
+        </div>
+        <button type="submit" class="submit-btn">تأكيد الطلب</button>
+        <div class="confirm-msg" id="confirmMsg">تم استلام طلبك بنجاح، سنتواصل معك قريبًا للتأكيد.</div>
+      </form>
+    </div>
+  </section>
+
+  <footer>© 2026 واحة — هذه صفحة عرض تجريبية لمنتج وهمي بغرض التصميم فقط.</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('confirmMsg').style.display = 'block';
+  document.getElementById('orderForm').querySelector('.submit-btn').textContent = 'تم الإرسال ✓';
+  return false;
+}
+</script>
+
+</body>
+</html>
